@@ -11,5 +11,23 @@ function sumOfNumbers(num) {
   }
   return sum;
 }
+//1,2,3,4,5,6,7,8,9
+//3,6,9,12,15,18,21,24,27,30
+//5,10,15,20,25,30
+function sumOfNumberss(num, sum = 0, count = 1) {
+  if (num < count) {
+    return sum;
+  }
+  if (count < num && (count % 3 === 0 || count % 5 === 0)) {
+    sum += count;
+  }
 
-console.log(sumOfNumbers(1000));
+  return sumOfNumberss(num, sum, ++count);
+}
+console.time("ForLoop");
+console.log(sumOfNumbers(5003));
+console.timeEnd("ForLoop");
+
+console.time("Recursive");
+console.log(sumOfNumberss(5003));
+console.timeEnd("Recursive");
